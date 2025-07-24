@@ -1,0 +1,4 @@
+
+connect serve	->	ftp ipAddress
+file add in server ->	put fileName
+file take in server ->	get filename
