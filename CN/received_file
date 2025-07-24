@@ -1,0 +1,34 @@
+import java.io.*;
+import java.net.*;
+
+public class tcp_client {
+    public static void main(String[] args) {
+        try {
+            Socket s = new Socket("localhost", 5020);
+            File file = new File("file_to_send.txt");
+            byte[] fileBytes = new byte[(int) file.length()];
+
+            FileInputStream fileIn = new FileInputStream(file);
+            fileIn.read(fileBytes);
+
+            DataOutputStream out = new DataOutputStream(s.getOutputStream());
+
+            // Send file size first
+            out.writeInt(fileBytes.length);
+
+            // Send file bytes
+            out.write(fileBytes, 0, fileBytes.length);
+
+            out.flush();
+
+            fileIn.close();
+            out.close();
+            s.close();
+
+            System.out.println("File sent successfully.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

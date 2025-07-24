@@ -1,0 +1,41 @@
+enable for en
+#conf t
+
+10	#vlan vlannumber
+	#name vlannumber
+	#exit
+
+20	#vlan 20
+	#name faculty
+	#exit
+
+#end
+
+
+show vlan brief
+
+interface range 
+
+switch-> interface range fa0/1
+
+switch-> switchport mode access
+
+switch-> switchport access vlan 10
+
+switch-> exit
+
+
+
+
+switch-> interface range fa0/2
+
+switch-> switchport mode access
+
+switch-> switchport access vlan 20
+
+
+
+
+switch-> interface range fa0/5
+
+switch-> switchport mode trunk
